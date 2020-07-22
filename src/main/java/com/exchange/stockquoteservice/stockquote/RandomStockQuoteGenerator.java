@@ -1,10 +1,9 @@
-package com.exchange.stockquoteservice.util;
-
+package com.exchange.stockquoteservice.stockquote;
 import java.time.LocalDate;
 import java.util.Currency;
 import java.util.Random;
 
-import com.exchange.stockquoteservice.dto.StockQuoteDTO;
+import com.exchange.stockquoteservice.stockquote.StockQuoteDTO;
 
 public class RandomStockQuoteGenerator {
 

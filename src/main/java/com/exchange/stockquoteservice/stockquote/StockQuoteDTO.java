@@ -1,4 +1,4 @@
-package com.exchange.stockquoteservice.dto;
+package com.exchange.stockquoteservice.stockquote;
 
 import java.io.Serializable;
 import java.time.LocalDate;
