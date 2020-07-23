@@ -7,7 +7,7 @@ import com.exchange.stockquoteservice.stockquote.StockQuoteDTO;
 
 public class RandomStockQuoteGenerator {
 
-    public static StockQuoteDTO generate(String tickerSymbol,String exchange) {
+    public static StockQuoteDTO generate(String tickerSymbol) {
 
         StockQuoteDTO stockQuoteDTO = new StockQuoteDTO();
 
@@ -15,10 +15,8 @@ public class RandomStockQuoteGenerator {
 
         Currency currency = Currency.getInstance("USD");
 
-        stockQuoteDTO.setTickerSymbol(tickerSymbol);
         stockQuoteDTO.setClosingPrice(randomPrice.nextFloat());
         stockQuoteDTO.setOpenningPrice(randomPrice.nextFloat());
-        stockQuoteDTO.setListedExchange(exchange);
         stockQuoteDTO.setCurrency(currency);
         stockQuoteDTO.setTradingDay(LocalDate.now());
 

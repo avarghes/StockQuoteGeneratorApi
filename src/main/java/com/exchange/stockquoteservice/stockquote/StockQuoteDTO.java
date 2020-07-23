@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Currency;
 
+import com.exchange.stockquoteservice.tradeexchange.CompanyDescription;
+
 public class StockQuoteDTO implements Serializable {
 
     /**
      *
      */
     private static final long serialVersionUID = 4692599796495022505L;
-
-    private String tickerSymbol;
 
     private float openningPrice;
 
@@ -23,14 +23,16 @@ public class StockQuoteDTO implements Serializable {
 
     private LocalDate tradingDay;
 
-    public String getTickerSymbol() {
-        return this.tickerSymbol;
+    private CompanyDescription description;
+
+    public CompanyDescription getDescription() {
+        return this.description;
     }
 
-    public void setTickerSymbol(String tickerSymbol) {
-        this.tickerSymbol = tickerSymbol;
+    public void setDescription(CompanyDescription description) {
+        this.description = description;
     }
-
+    
     public float getOpenningPrice() {
         return this.openningPrice;
     }
