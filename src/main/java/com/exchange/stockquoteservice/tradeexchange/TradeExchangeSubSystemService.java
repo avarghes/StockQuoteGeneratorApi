@@ -8,25 +8,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Component
-public class TradeExchangeSubSystemService implements ITradeExchangeService
- {
+public class TradeExchangeSubSystemService implements ITradeExchangeService {
 
-   private TradeExchange tradeExchange;
+	private TradeExchange tradeExchange;
 
-   @Autowired
-   public TradeExchangeSubSystemService(TradeExchange tradeExchange){
-       this.tradeExchange = tradeExchange;
-   }
-    
-   public CompanyDescription getTradedCompanyInfoByTickerName(String ticker){
-       return tradeExchange.lookupTicker(ticker);
-   }
+	@Autowired
+	public TradeExchangeSubSystemService(TradeExchange tradeExchange) {
+		this.tradeExchange = tradeExchange;
+	}
 
-   public List<CompanyDescription> getAllTradedCompanyInfo(){
-      return tradeExchange.allTradedTicker();
-   }
+	public CompanyDescription getTradedCompanyInfoByTickerName(String ticker) {
+		return tradeExchange.lookupTicker(ticker);
+	}
 
-   public String getExchangeName(){
-      return tradeExchange.getExchangeName();
-   }
+	public List<CompanyDescription> getAllTradedCompanyInfo() {
+		return tradeExchange.allTradedTicker();
+	}
+
+	public String getExchangeName() {
+		return tradeExchange.getExchangeName();
+	}
 }

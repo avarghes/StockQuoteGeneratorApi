@@ -10,44 +10,43 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.ArrayList;
 
-
 @Component
 class StockQuoteFacade {
 
-    private IStockQuoteService stockQuoteService;
+	private IStockQuoteService stockQuoteService;
 
-    private ITradeExchangeService tradeExchangeService;
+	private ITradeExchangeService tradeExchangeService;
 
-    @Autowired
-    public StockQuoteFacade(IStockQuoteService stockQuoteService,ITradeExchangeService tradeExchangeService){
-        this.stockQuoteService = stockQuoteService;
-        this.tradeExchangeService = tradeExchangeService;
-    }
+	@Autowired
+	public StockQuoteFacade(IStockQuoteService stockQuoteService, ITradeExchangeService tradeExchangeService) {
+		this.stockQuoteService = stockQuoteService;
+		this.tradeExchangeService = tradeExchangeService;
+	}
 
-    public StockQuoteDTO lastTradedStockPriceInfo(String ticker,String exchange){
-        CompanyDescription companyDesc = tradeExchangeService.getTradedCompanyInfoByTickerName(ticker);
-        
-        StockQuoteDTO stockQuoteDTO = stockQuoteService.pullStockQuoteByTickerId(ticker);
-        
-        stockQuoteDTO.setDescription(companyDesc);
+	public StockQuoteDTO lastTradedStockPriceInfo(String ticker, String exchange) {
+		CompanyDescription companyDesc = tradeExchangeService.getTradedCompanyInfoByTickerName(ticker);
 
-        return stockQuoteDTO;
-    }
- 
-    public List<StockQuoteDTO> allTradedStockPriceInfo(){
-        List<CompanyDescription> companydescList = tradeExchangeService.getAllTradedCompanyInfo();
+		StockQuoteDTO stockQuoteDTO = stockQuoteService.pullStockQuoteByTickerId(ticker);
 
-        List<StockQuoteDTO> alltradedStockPrices = new ArrayList<StockQuoteDTO>();
+		stockQuoteDTO.setDescription(companyDesc);
 
-        for(CompanyDescription companyInfo: companydescList){
-            StockQuoteDTO stockQuoteDTO = stockQuoteService.pullStockQuoteByTickerId(companyInfo.getTickerSymbol());
+		return stockQuoteDTO;
+	}
 
-            stockQuoteDTO.setDescription(companyInfo);
+	public List<StockQuoteDTO> allTradedStockPriceInfo() {
+		List<CompanyDescription> companydescList = tradeExchangeService.getAllTradedCompanyInfo();
 
-            alltradedStockPrices.add(stockQuoteDTO);
-        }
+		List<StockQuoteDTO> alltradedStockPrices = new ArrayList<StockQuoteDTO>();
 
-        return alltradedStockPrices;
-    }
+		for (CompanyDescription companyInfo : companydescList) {
+			StockQuoteDTO stockQuoteDTO = stockQuoteService.pullStockQuoteByTickerId(companyInfo.getTickerSymbol());
+
+			stockQuoteDTO.setDescription(companyInfo);
+
+			alltradedStockPrices.add(stockQuoteDTO);
+		}
+
+		return alltradedStockPrices;
+	}
 
 }

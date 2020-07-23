@@ -9,65 +9,66 @@ import org.springframework.stereotype.Component;
 
 final public class TradeExchange {
 
-    public Map<String,CompanyDescription> stocksTradedOnExchange = null;
+	public Map<String, CompanyDescription> stocksTradedOnExchange = null;
 
-    public String exchangeName;
+	public String exchangeName;
 
-    public TradeExchange(){
+	public TradeExchange() {
 
-        stocksTradedOnExchange = new HashMap<String,CompanyDescription>();
+		stocksTradedOnExchange = new HashMap<String, CompanyDescription>();
 
-        // Initialized to the default listed stocks
-        CompanyDescription description = new CompanyDescription("GOOG","Alphabet Inc","Search Engine Giant.");
-        stocksTradedOnExchange.put(description.getTickerSymbol(),description);
+		// Initialized to the default listed stocks
+		CompanyDescription description = new CompanyDescription("GOOG", "Alphabet Inc", "Search Engine Giant.");
+		stocksTradedOnExchange.put(description.getTickerSymbol(), description);
 
-        description = new CompanyDescription("APPLE","Apple Inc","Manufacturer of iPhones/Macs.");
-        stocksTradedOnExchange.put(description.getTickerSymbol(),description);
+		description = new CompanyDescription("APPLE", "Apple Inc", "Manufacturer of iPhones/Macs.");
+		stocksTradedOnExchange.put(description.getTickerSymbol(), description);
 
-        description = new CompanyDescription("GE","General Electric Inc","Industrial Behmoth (Jet Engines/Heavy Electricals)");
-        stocksTradedOnExchange.put(description.getTickerSymbol(),description);
+		description = new CompanyDescription("GE", "General Electric Inc",
+				"Industrial Behmoth (Jet Engines/Heavy Electricals)");
+		stocksTradedOnExchange.put(description.getTickerSymbol(), description);
 
-        description = new CompanyDescription("WALM","Walmart Inc","Retail Giant");
-        stocksTradedOnExchange.put(description.getTickerSymbol(),description);
+		description = new CompanyDescription("WALM", "Walmart Inc", "Retail Giant");
+		stocksTradedOnExchange.put(description.getTickerSymbol(), description);
 
-    }
+	}
 
-    public TradeExchange(String exchangeName){
-        this();
-        this.exchangeName = exchangeName;
-    }
+	public TradeExchange(String exchangeName) {
+		this();
+		this.exchangeName = exchangeName;
+	}
 
-    public void addTicker(String ticker,CompanyDescription description){
-        stocksTradedOnExchange.put(ticker,description);
-    }
-    
-    public boolean removeTicker(String ticker){
-        if(isTickerTraded(ticker)){
-            stocksTradedOnExchange.remove(ticker);
-            return true;
-        }
+	public void addTicker(String ticker, CompanyDescription description) {
+		stocksTradedOnExchange.put(ticker, description);
+	}
 
-        return false;
-    }
+	public boolean removeTicker(String ticker) {
+		if (isTickerTraded(ticker)) {
+			stocksTradedOnExchange.remove(ticker);
+			return true;
+		}
 
-    public String getExchangeName() {
-        return this.exchangeName;
-    }
+		return false;
+	}
 
-    public boolean isTickerTraded(String ticker){
-       return (stocksTradedOnExchange.get(ticker) != null);
-    }
+	public String getExchangeName() {
+		return this.exchangeName;
+	}
 
-    public CompanyDescription lookupTicker(String ticker){
-        return stocksTradedOnExchange.get(ticker);
-    }
+	public boolean isTickerTraded(String ticker) {
+		return (stocksTradedOnExchange.get(ticker) != null);
+	}
 
-    public List<CompanyDescription> allTradedTicker(){
-        List<CompanyDescription> tradedTickerList = new ArrayList<CompanyDescription>();
+	public CompanyDescription lookupTicker(String ticker) {
+		return stocksTradedOnExchange.get(ticker);
+	}
 
-        stocksTradedOnExchange.forEach((k,v) -> tradedTickerList.add(v));
+	public List<CompanyDescription> allTradedTicker() {
+		List<CompanyDescription> tradedTickerList = new ArrayList<CompanyDescription>();
 
-        return tradedTickerList;
-    }
+		stocksTradedOnExchange.forEach((k, v) -> tradedTickerList.add(v));
+
+		return tradedTickerList;
+	}
 
 }

@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Value;
 @Configuration
 class TradeExchangeConfig {
 
-    @Value("${traded.exchange.name}")
-    private String exchangeName;
-  
-    @Bean
-    public TradeExchange getTradeExchange(){
-        return new TradeExchange("NASDAQ");
-    }
+	@Value("${traded.exchange.name}")
+	private String exchangeName;
+
+	@Bean
+	public TradeExchange getTradeExchange() {
+		return new TradeExchange("NASDAQ");
+	}
 }
